@@ -9,19 +9,18 @@ namespace DynamicArrayApp
     class DynamicArray<T>
     {
 
-        private int capacity;
+        public int capacity;
         public int logicalSize;
-        private T[] dynamicArray;
+        public T[] dynamicArray;
+        int maxPossibleArrayLenght;
 
-        public DynamicArray()
+        public DynamicArray(int maxArrayLenght = 1024)
         {
+            maxPossibleArrayLenght = maxArrayLenght;
             capacity = 1;
             dynamicArray = new T[capacity];
-            
-
         }
 
-        
         //Add
         public void Add (T value)
         {
@@ -33,11 +32,8 @@ namespace DynamicArrayApp
             }
                 
                 dynamicArray[logicalSize] = value;
-                logicalSize++;
-            
+                logicalSize++;   
         }
-        
-
 
         //Insert
         public void Insert(int index, T value)
@@ -54,7 +50,6 @@ namespace DynamicArrayApp
             {
                 dynamicArray[i + 1] = dynamicArray[i];
             }
-
             dynamicArray[index] = value;
             logicalSize++;
         }
@@ -75,15 +70,21 @@ namespace DynamicArrayApp
                 dynamicArray[i] = dynamicArray[i + 1];
             }
             logicalSize--;
-
         }
 
         //Capacity
+        public int Capacity ()
+        {
+            return capacity;
+        }
 
         //Size
+        public int Size()
+        {
+            return logicalSize;
+        }
 
         //Encrease - encrease array capacity
-
         T[] Encrease(T[] oldDynamicArray)
         {
             T[] dynamicArray = new T[capacity*2];
@@ -91,7 +92,14 @@ namespace DynamicArrayApp
             {
                 dynamicArray[i] = oldDynamicArray[i];
             }
-            capacity = capacity * 2;
+            if(capacity*2 <= maxPossibleArrayLenght)
+            {
+                capacity = capacity * 2;
+            }
+            else
+            {
+                throw new OverflowException();
+            }
             return dynamicArray;
         }
 

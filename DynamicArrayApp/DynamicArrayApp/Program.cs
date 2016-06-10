@@ -10,44 +10,62 @@ namespace DynamicArrayApp
     {
         static void Main(string[] args)
         {
-            DynamicArray<int> array1 = new DynamicArray<int>();
-            array1.Add(5);
-            array1.Add(7);
-            array1.Add(2);
-            array1.Add(9);
-            array1.Add(4);
-            array1.Add(2);
-            array1.Add(4);
-            array1.Add(1);
 
-            //printing array
-            for (int i =0; i<array1.logicalSize; i++)
+            Console.WriteLine("Working with Queue...\n");
+
+            DynamicQueue<int> queue1 = new DynamicQueue<int>();
+
+            Console.WriteLine("Is empty - {0}", queue1.IsEmpty());
+            Console.WriteLine("Is full - {0}", queue1.IsFull());
+
+            Console.WriteLine("Enquing values");
+
+            Random rnd = new Random();
+            for (int i=0; i<10; i++)
             {
-                Console.Write(array1.Get(i));
+                queue1.Enqueue(rnd.Next(9));
+                queue1.Print();
             }
-            Console.WriteLine();
-            //inserting ...
-
-            Console.WriteLine("Inserting");
-            array1.Insert(3, 8);
             
-            //printing array
-            for (int i = 0; i < array1.logicalSize; i++)
+            Console.WriteLine("Is empty - {0}", queue1.IsEmpty());
+            Console.WriteLine("Is full - {0}", queue1.IsFull());
+
+            for (int i = 0; i <10; i++)
             {
-                Console.Write(array1.Get(i));
+                Console.WriteLine("Dequed value: {0}", queue1.Dequeue());
+                queue1.Print();
             }
+            Console.WriteLine("Is empty - {0}", queue1.IsEmpty());
+            Console.WriteLine("Is full - {0}", queue1.IsFull());
+            
+            Console.WriteLine("Working with Stack...\n");
+
+            DynamicStack<int> stack1 = new DynamicStack<int>();
+
+            Console.WriteLine("Is empty - {0}", stack1.IsEmpty());
+            Console.WriteLine("Is full - {0}", stack1.IsFull());
+
+            Console.WriteLine("Pushing values");
+            
+            for (int i = 0; i < 10; i++)
+            {
+                stack1.Push(rnd.Next(9));
+                stack1.Print();
+            }
+            stack1.Print();
+
+            Console.WriteLine("Is empty - {0}", stack1.IsEmpty());
+            Console.WriteLine("Is full - {0}", stack1.IsFull());
+            Console.WriteLine();
+            Console.WriteLine("Peek value: {0}", stack1.Peek());
             Console.WriteLine();
 
-
-            Console.WriteLine("Removing");
-            array1.Remove(5);
-            //printing array
-            for (int i = 0; i < array1.logicalSize; i++)
+            for (int i = 0; i < 10; i++)
             {
-                Console.Write(array1.Get(i));
+                Console.WriteLine("poped value: {0}", stack1.Pop());
+                stack1.Print();
             }
             Console.WriteLine();
-
 
             Console.ReadKey();
 
