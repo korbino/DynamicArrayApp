@@ -13,7 +13,7 @@ namespace DynamicArrayApp
         private int tail = 0;
         private int head = 0;
 
-        public DynamicQueue()
+        public DynamicQueue(int maxArrayLenght)
         {
             dynamicQueue = new DynamicArray<T>();
         }
@@ -23,8 +23,7 @@ namespace DynamicArrayApp
         public void Enqueue(T value)
         {
             dynamicQueue.Add(value);
-            tail++;
-
+            
         }
 
         //Dequeue
@@ -32,8 +31,6 @@ namespace DynamicArrayApp
         {
             T value = dynamicQueue.Get(head);
             dynamicQueue.Remove(head);
-            dynamicQueue.Insert(head, default(T));
-            head++;
             return value;
         }
 

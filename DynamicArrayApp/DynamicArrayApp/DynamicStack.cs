@@ -11,7 +11,7 @@ namespace DynamicArrayApp
 
         public DynamicArray<T> dynamicStack;
 
-        public DynamicStack()
+        public DynamicStack(int maxArrayLenght)
         {
             dynamicStack = new DynamicArray<T>();
         }
