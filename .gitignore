@@ -1,0 +1,6 @@
+*.exe
+*.dll
+*.pdb
+DynamicArrayApp/DynamicArrayApp/obj*/
+DynamicArrayApp/DynamicArrayApp/bin*/
+DynamicArrayApp/DynamicArrayApp/Properties*/
